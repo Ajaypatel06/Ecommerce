@@ -1,0 +1,41 @@
+file,column,type,description
+products.csv,product_id,PK,Product ID
+products.csv,category,string,Product category
+products.csv,sub_category,string,Sub-category
+products.csv,brand,string,Brand
+products.csv,cost,decimal,Unit cost (INR)
+products.csv,price,decimal,Unit price (INR)
+customers.csv,customer_id,PK,Customer ID
+customers.csv,location,string,City/region
+customers.csv,segment,enum,"New, Returning, VIP"
+customers.csv,signup_date,date,Signup date
+orders.csv,order_id,PK,Order ID
+orders.csv,order_date,date,Order date
+orders.csv,customer_id,FK->customers.customer_id,Customer
+orders.csv,product_id,FK->products.product_id,Product
+orders.csv,quantity,int,Quantity
+orders.csv,revenue,decimal,Net revenue after discount
+orders.csv,cost,decimal,COGS
+orders.csv,discount,decimal,Discount amount
+orders.csv,payment_type,enum,"Card, UPI, Wallet, COD, NetBanking"
+orders.csv,channel,enum,"Web, App"
+shipments.csv,shipment_id,PK,Shipment ID
+shipments.csv,order_id,FK->orders.order_id,Order
+shipments.csv,ship_date,date,Ship date
+shipments.csv,delivery_date,date,Delivery date
+shipments.csv,delivery_status,enum,"Delivered, Returned, Lost, Damaged"
+shipments.csv,shipping_cost,decimal,Shipping cost
+shipments.csv,delay_days,int,Delivery days over 3-day SLA
+returns.csv,return_id,PK,Return ID
+returns.csv,order_id,FK->orders.order_id,Order
+returns.csv,return_date,date,Return date
+returns.csv,reason,string,Return reason
+returns.csv,refund_amount,decimal,Refund amount
+sessions.csv,session_id,PK,Session ID
+sessions.csv,customer_id,FK->customers.customer_id,Customer
+sessions.csv,visit_date,date,Visit date
+sessions.csv,channel,enum,"Web, App"
+sessions.csv,device,enum,"Desktop, Mobile, Tablet"
+sessions.csv,pages_viewed,int,Pages viewed in session
+sessions.csv,time_spent_sec,int,Time spent in seconds
+sessions.csv,conversion_flag,binary,1 if session converted to order
